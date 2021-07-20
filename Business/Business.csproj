@@ -58,10 +58,11 @@
     <Compile Include="Grades\Grade.cs" />
     <Compile Include="Grades\GradeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Students\Student.cs" />
+    <Compile Include="Students\StudentBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="StudentCourses\" />
-    <Folder Include="Students\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
