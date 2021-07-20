@@ -10,5 +10,6 @@ namespace Business
     {
         public long Id { get; set; }
         public bool Active { get; set; }
+        internal bool IsNew { get { return Id == 0; } }
     }
 }

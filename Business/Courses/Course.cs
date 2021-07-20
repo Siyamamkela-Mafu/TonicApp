@@ -14,7 +14,7 @@ namespace Business.Courses
         public string Description { get; set; }
         #endregion
         #region CRUD
-        internal IQueryable<Course> Get(TonicEntities context)
+        internal static IQueryable<Course> Read(TonicEntities context)
         {
             return (from c in context.Courses
                     select new Course
@@ -24,7 +24,7 @@ namespace Business.Courses
                         Active=c.Active
                     });
         }
-        internal Data.Course ToEntity()
+        internal Data.Course Create()
         {
             return new Data.Course
             {
