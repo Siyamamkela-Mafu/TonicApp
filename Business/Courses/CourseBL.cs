@@ -21,6 +21,7 @@ namespace Business.Courses
                         transaction.Commit();
                         return entity.Id;
                     }
+                    else
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)

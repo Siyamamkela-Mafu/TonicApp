@@ -12,6 +12,7 @@
         <AssociationConnector Association="TonicModel.FK_StudentCourse_Course" />
         <AssociationConnector Association="TonicModel.FK_StudentCourse_Grade" />
         <AssociationConnector Association="TonicModel.FK_StudentCourse_Student" />
+        <EntityTypeShape EntityType="TonicModel.sysdiagram" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

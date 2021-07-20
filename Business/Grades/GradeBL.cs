@@ -24,6 +24,7 @@ namespace Business.Grades
                         transaction.Commit();
                         return entity.Id;
                     }
+                    else
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)
@@ -71,7 +72,6 @@ namespace Business.Grades
                     transaction.Rollback();
                     throw exc;
                 }
-
             }
         }
         private static Data.Grade GetEntity(long id)
