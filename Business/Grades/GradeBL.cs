@@ -27,7 +27,7 @@ namespace Business.Grades
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)
-                            CustomErrorMessage.InvalidObject("grade");
+                            CustomErrorMessage.InvalidObject(nameof(Grade));
                         model.Update(entity);
                         context.SaveChanges();
                         transaction.Commit();
@@ -55,7 +55,7 @@ namespace Business.Grades
                 {
                     var entity = GetEntity(id);
                     if (entity == null)
-                        CustomErrorMessage.InvalidObject("grade");
+                        CustomErrorMessage.InvalidObject(nameof(Grade));
 
                     new Grade().Delete(entity);
                     context.SaveChanges();

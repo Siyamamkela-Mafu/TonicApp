@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Students
+namespace Business.StudentCourses
 {
-   public class StudentBL
+   public class StudentCourseBL
     {
-        public static long Save(Student model)
+        public static long Save(StudentCourse model)
         {
             using (var context = TonicDTO.Context)
             using (var transaction = context.Database.BeginTransaction())
@@ -26,9 +26,9 @@ namespace Business.Students
                     }
                     else
                     {
-                        var entity = GetEntity(model.Id);
+                        var entity = GetEntity(model.StudentId, model.StudentId);
                         if (entity == null)
-                            CustomErrorMessage.InvalidObject("student");
+                            CustomErrorMessage.InvalidObject(nameof(StudentCourse));
 
                         model.Update(entity);
                         context.SaveChanges();
@@ -47,39 +47,11 @@ namespace Business.Students
                     throw exc;
                 }
             }
-        }
-        public static void Delete(long id)
+        }        
+        private static Data.StudentCourse GetEntity(long studentId, long courseId)
         {
             using (var context = TonicDTO.Context)
-            using (var transaction = context.Database.BeginTransaction())
-            {
-                try
-                {
-                    var entity = GetEntity(id);
-                    if (entity == null)
-                        CustomErrorMessage.InvalidObject(nameof(Data.Student));
-
-                    new Student().Delete(entity);
-                    context.SaveChanges();
-                    transaction.Commit();
-                }
-                catch (ArgumentException exc)
-                {
-                    transaction.Rollback();
-                    throw exc;
-                }
-                catch (Exception exc)
-                {
-                    transaction.Rollback();
-                    throw exc;
-                }
-
-            }
-        }
-        private static Data.Student GetEntity(long id)
-        {
-            using (var context = TonicDTO.Context)
-                return context.Students.FirstOrDefault(x => x.Id == id);
+                return context.StudentCourses.FirstOrDefault(x => x.StudentId == studentId && x.CourseId==courseId);
         }
     }
 }

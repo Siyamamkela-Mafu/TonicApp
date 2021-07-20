@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Business.CustomErrorMessages;
+using Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Business.Students
         internal void Update(Data.Student entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();
+                CustomErrorMessage.InvalidObject(nameof(Student));
 
             entity.FName = FName;
             entity.Surname = Surname;
@@ -45,7 +46,7 @@ namespace Business.Students
         internal void Delete(Data.Student entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();
+                CustomErrorMessage.InvalidObject(nameof(Grade));
             entity.Active = false;
         }
         #endregion

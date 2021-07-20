@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.CustomErrorMessages;
 using Data;
 
 namespace Business.Courses
@@ -35,14 +36,14 @@ namespace Business.Courses
         internal void Update(Data.Course entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();
+                CustomErrorMessage.InvalidObject(nameof(Course));
             entity.Code = Code;
             entity.Description = Description;
         }
         internal void Delete(Data.Course entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();
+                CustomErrorMessage.InvalidObject(nameof(Course));
             entity.Active = false;
         }
         #endregion

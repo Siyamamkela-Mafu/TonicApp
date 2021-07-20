@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using Business.CustomErrorMessages;
+using Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,14 +36,14 @@ namespace Business.Grades
         internal void Update(Data.Grade entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();   
-            
+                CustomErrorMessage.InvalidObject(nameof(Data.Grade));
+
             entity.Description = Description;
         }
         internal void Delete(Data.Grade entity)
         {
             if (entity.Id != Id)
-                throw new ArgumentException();
+                CustomErrorMessage.InvalidObject(nameof(Data.Grade));
             entity.Active = false;
         }
         #endregion
