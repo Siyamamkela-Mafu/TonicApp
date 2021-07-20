@@ -1,13 +1,16 @@
 ﻿using Business.CustomErrorMessages;
 using Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Business.Courses
+namespace Business.Grades
 {
-    public class CourseBL
+   public class GradeBL
     {
-        public static long Save(Course model)
+        public static long Save(Grade model)
         {
             using (var context = TonicDTO.Context)
             using (var transaction = context.Database.BeginTransaction())
@@ -24,8 +27,7 @@ namespace Business.Courses
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)
-                            CustomErrorMessage.InvalidObject("course");
-
+                            CustomErrorMessage.InvalidObject("grade");
                         model.Update(entity);
                         context.SaveChanges();
                         transaction.Commit();
@@ -53,8 +55,9 @@ namespace Business.Courses
                 {
                     var entity = GetEntity(id);
                     if (entity == null)
-                        CustomErrorMessage.InvalidObject("course");
-                    new Course().Delete(entity);
+                        CustomErrorMessage.InvalidObject("grade");
+
+                    new Grade().Delete(entity);
                     context.SaveChanges();
                     transaction.Commit();
                 }
@@ -71,10 +74,10 @@ namespace Business.Courses
 
             }
         }
-        private static Data.Course GetEntity(long id)
+        private static Data.Grade GetEntity(long id)
         {
             using (var context = TonicDTO.Context)
-                return context.Courses.FirstOrDefault(x => x.Id == id);
+                return context.Grades.FirstOrDefault(x => x.Id == id);
         }
     }
 }

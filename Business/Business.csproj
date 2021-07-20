@@ -54,7 +54,9 @@
     <Compile Include="BaseObject.cs" />
     <Compile Include="Courses\Course.cs" />
     <Compile Include="Courses\CourseBL.cs" />
+    <Compile Include="CustomErrorMessages\CustomErrorMessage.cs" />
     <Compile Include="Grades\Grade.cs" />
+    <Compile Include="Grades\GradeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
