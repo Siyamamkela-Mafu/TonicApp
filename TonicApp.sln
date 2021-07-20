@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TonicApp", "TonicApp\TonicApp.csproj", "{2D7DCCD9-7DAF-4EA0-A93D-91FB6419AD13}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A} = {EFDAA961-40C2-4694-94CA-322DEBE16C0A}
+		{0735E2AB-90A3-42F2-9202-42761FE3D339} = {0735E2AB-90A3-42F2-9202-42761FE3D339}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{0735E2AB-90A3-42F2-9202-42761FE3D339}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A} = {EFDAA961-40C2-4694-94CA-322DEBE16C0A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{EFDAA961-40C2-4694-94CA-322DEBE16C0A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D7DCCD9-7DAF-4EA0-A93D-91FB6419AD13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D7DCCD9-7DAF-4EA0-A93D-91FB6419AD13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D7DCCD9-7DAF-4EA0-A93D-91FB6419AD13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D7DCCD9-7DAF-4EA0-A93D-91FB6419AD13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0735E2AB-90A3-42F2-9202-42761FE3D339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0735E2AB-90A3-42F2-9202-42761FE3D339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0735E2AB-90A3-42F2-9202-42761FE3D339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0735E2AB-90A3-42F2-9202-42761FE3D339}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFDAA961-40C2-4694-94CA-322DEBE16C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4700011B-EE91-40E2-8C9B-5F9F21FCD3AE}
+	EndGlobalSection
+EndGlobal
