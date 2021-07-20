@@ -39,6 +39,12 @@ namespace Business.Courses
             entity.Code = Code;
             entity.Description = Description;
         }
+        internal void Delete(Data.Course entity)
+        {
+            if (entity.Id != Id)
+                throw new ArgumentException();
+            entity.Active = false;
+        }
         #endregion
     }
 }
