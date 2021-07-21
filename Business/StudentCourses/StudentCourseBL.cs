@@ -2,6 +2,7 @@
 using Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Business.StudentCourses
                             CustomErrorMessage.InvalidObject(nameof(StudentCourse));
 
                         model.Update(entity);
-                        context.Entry(entity);
+                        context.Entry(entity).State=EntityState.Modified;
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;

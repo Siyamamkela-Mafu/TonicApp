@@ -2,6 +2,7 @@
 using Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,7 +37,7 @@ namespace Business.Grades
                             CustomErrorMessage.InvalidObject(nameof(Grade));
 
                         model.Update(entity);
-                        context.Entry(entity);
+                        context.Entry(entity).State = EntityState.Modified;
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -66,6 +67,7 @@ namespace Business.Grades
                         CustomErrorMessage.InvalidObject(nameof(Grade));
 
                     new Grade().Delete(entity);
+                    context.Entry(entity).State = EntityState.Modified;
                     context.SaveChanges();
                     transaction.Commit();
                 }

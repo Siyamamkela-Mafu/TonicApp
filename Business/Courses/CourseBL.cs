@@ -1,6 +1,7 @@
 ﻿using Business.CustomErrorMessages;
 using Data;
 using System;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Business.Courses
@@ -31,10 +32,10 @@ namespace Business.Courses
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)
-                            CustomErrorMessage.InvalidObject("course");
+                            CustomErrorMessage.InvalidObject(nameof(Student));
 
                         model.Update(entity);
-                        context.Entry(entity);
+                        context.Entry(entity).State = EntityState.Modified;
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -61,8 +62,9 @@ namespace Business.Courses
                 {
                     var entity = GetEntity(id);
                     if (entity == null)
-                        CustomErrorMessage.InvalidObject("course");
+                        CustomErrorMessage.InvalidObject(nameof(Course));
                     new Course().Delete(entity);
+                    context.Entry(entity).State = EntityState.Modified;
                     context.SaveChanges();
                     transaction.Commit();
                 }

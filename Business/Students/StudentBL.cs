@@ -1,10 +1,8 @@
 ﻿using Business.CustomErrorMessages;
 using Data;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Business.Students
 {
@@ -12,6 +10,7 @@ namespace Business.Students
     {
         public static long Save(Student model)
         {
+            var entity = (dynamic)null;
             using (var context = TonicDTO.Context)
             using (var transaction = context.Database.BeginTransaction())
             {
@@ -24,24 +23,22 @@ namespace Business.Students
 
                     if (model.IsNew)
                     {
-                        var entity = model.Create();
-                        context.Students.Add(entity);
-                        context.SaveChanges();
-                        transaction.Commit();
-                        return entity.Id;
+                         entity = model.Create();
+                        context.Students.Add(entity);                       
+                       
                     }
                     else
                     {
-                        var entity = GetEntity(model.Id);
+                         entity = GetEntity(model.Id);
                         if (entity == null)
                             CustomErrorMessage.InvalidObject(nameof(Student));
 
                         model.Update(entity);
-                        context.Entry(entity);
-                        context.SaveChanges();
-                        transaction.Commit();
-                        return entity.Id;
+                        context.Entry(entity).State=EntityState.Modified;                        
                     }
+                    context.SaveChanges();
+                    transaction.Commit();
+                    return entity.Id;
                 }
                 catch (ArgumentException exc)
                 {
@@ -67,10 +64,11 @@ namespace Business.Students
                         CustomErrorMessage.InvalidObject(nameof(Data.Student));
 
                     new Student().Delete(entity);
-                    context.Entry(entity);
+                    context.Entry(entity).State=EntityState.Modified;
                     context.SaveChanges();
                     transaction.Commit();
                 }
+
                 catch (ArgumentException exc)
                 {
                     transaction.Rollback();
