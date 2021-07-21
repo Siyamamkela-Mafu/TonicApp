@@ -19,7 +19,7 @@ namespace TonicApp.Controllers
                 if (ModelState.IsValid)
                 {
                     Business.Students.StudentBL.Delete(studentId);
-                    TempData["Success"] = ModelState.IsValid;
+                    TempData["Success"] = "Student deleted successfully.";
                 }              
             }
             catch(ArgumentException exc)
