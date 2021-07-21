@@ -21,6 +21,7 @@ namespace Business.Courses
                     select new Course
                     {
                         Id = c.Id,
+                        Code = c.Code,
                         Description = c.Description,
                         Active=c.Active
                     });
@@ -30,7 +31,9 @@ namespace Business.Courses
             return new Data.Course
             {
                 Id = Id,
-                Description = Description
+                Code=Code,
+                Description = Description,
+                Active=Active
             };
         }
         internal void Update(Data.Course entity)

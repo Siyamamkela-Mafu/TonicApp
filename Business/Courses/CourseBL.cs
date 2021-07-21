@@ -14,9 +14,15 @@ namespace Business.Courses
             {
                 try
                 {
+                    var courseExists = ValidateCourse(model.Code);
+                    if (courseExists != null)
+                        if (courseExists.Code != null)
+                            model.Id = courseExists.Id;
+
                     if (model.IsNew)
                     {
                         var entity = model.Create();
+                        context.Courses.Add(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -28,6 +34,7 @@ namespace Business.Courses
                             CustomErrorMessage.InvalidObject("course");
 
                         model.Update(entity);
+                        context.Entry(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -77,5 +84,14 @@ namespace Business.Courses
             using (var context = TonicDTO.Context)
                 return context.Courses.FirstOrDefault(x => x.Id == id);
         }
+        private static Data.Course ValidateCourse(string code)
+        {
+            using (var context = TonicDTO.Context)
+                if (context.Courses.Any(x => x.Code.ToLower().Trim() == code.ToLower().Trim()) == true)
+                    return context.Courses.FirstOrDefault(x => x.Code.ToLower().Trim() == code.ToLower().Trim());
+                else
+                    return null;
+        }
+
     }
 }

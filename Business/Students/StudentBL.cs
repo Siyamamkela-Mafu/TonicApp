@@ -17,9 +17,15 @@ namespace Business.Students
             {
                 try
                 {
+                    var studentExists = ValidateStudent(model.StudentNo);
+                    if (studentExists != null)
+                        if (studentExists.StudentNo != null)
+                            model.Id = studentExists.Id;
+
                     if (model.IsNew)
                     {
                         var entity = model.Create();
+                        context.Students.Add(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -28,9 +34,10 @@ namespace Business.Students
                     {
                         var entity = GetEntity(model.Id);
                         if (entity == null)
-                            CustomErrorMessage.InvalidObject("student");
+                            CustomErrorMessage.InvalidObject(nameof(Student));
 
                         model.Update(entity);
+                        context.Entry(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -80,6 +87,14 @@ namespace Business.Students
         {
             using (var context = TonicDTO.Context)
                 return context.Students.FirstOrDefault(x => x.Id == id);
+        }
+        private static Data.Student ValidateStudent(string studentNo)
+        {
+            using (var context = TonicDTO.Context)
+                if (context.Students.Any(x => x.StudentNo.ToLower().Trim() == studentNo.ToLower().Trim()) == true)
+                    return context.Students.FirstOrDefault(x => x.StudentNo.ToLower().Trim() == studentNo.ToLower().Trim());
+                else
+                    return null;
         }
     }
 }

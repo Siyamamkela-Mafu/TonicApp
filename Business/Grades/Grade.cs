@@ -30,7 +30,8 @@ namespace Business.Grades
             return new Data.Grade
             {
                 Id = Id,
-                Description = Description
+                Description = Description,
+                Active=Active
             };
         }
         internal void Update(Data.Grade entity)

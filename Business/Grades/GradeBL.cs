@@ -17,9 +17,14 @@ namespace Business.Grades
             {
                 try
                 {
+                    var gradeExists = ValidateGrade(model.Description);
+                    if (gradeExists != null)
+                        if (gradeExists.Description != null)
+                            model.Id = gradeExists.Id;
                     if (model.IsNew)
-                    {
+                    {                        
                         var entity = model.Create();
+                        context.Grades.Add(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -29,7 +34,9 @@ namespace Business.Grades
                         var entity = GetEntity(model.Id);
                         if (entity == null)
                             CustomErrorMessage.InvalidObject(nameof(Grade));
+
                         model.Update(entity);
+                        context.Entry(entity);
                         context.SaveChanges();
                         transaction.Commit();
                         return entity.Id;
@@ -78,6 +85,14 @@ namespace Business.Grades
         {
             using (var context = TonicDTO.Context)
                 return context.Grades.FirstOrDefault(x => x.Id == id);
+        }
+        private static Data.Grade ValidateGrade(string desc)
+        {
+            using (var context = TonicDTO.Context)
+                if (context.Grades.Any(x => x.Description.ToLower().Trim() == desc.ToLower().Trim()) == true)
+                    return context.Grades.FirstOrDefault(x => x.Description.ToLower().Trim() == desc.ToLower().Trim());
+                else
+                    return null;
         }
     }
 }

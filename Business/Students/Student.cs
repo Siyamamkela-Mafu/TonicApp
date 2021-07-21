@@ -13,6 +13,7 @@ namespace Business.Students
         #region Properties
         public string FName { get; set; }
         public string Surname { get; set; }
+        public string StudentNo { get; set; }
         #endregion
         #region CRUD
         internal static IQueryable<Student> Read(TonicEntities context)
@@ -23,7 +24,8 @@ namespace Business.Students
                         Id = s.Id,
                         FName = s.FName,
                         Surname = s.Surname,
-                        Active = s.Active
+                        Active = s.Active,
+                        StudentNo=s.StudentNo
                     });
         }
         internal Data.Student Create()
@@ -32,7 +34,9 @@ namespace Business.Students
             {
                 Id = Id,
                 FName = FName,
-                Surname = Surname
+                Surname = Surname,
+                StudentNo=StudentNo,
+                Active=Active
             };
         }
         internal void Update(Data.Student entity)
@@ -42,6 +46,7 @@ namespace Business.Students
 
             entity.FName = FName;
             entity.Surname = Surname;
+            entity.StudentNo = StudentNo;           
         }
         internal void Delete(Data.Student entity)
         {

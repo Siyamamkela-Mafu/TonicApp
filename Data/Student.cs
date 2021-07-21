@@ -24,6 +24,7 @@ namespace Data
         public string FName { get; set; }
         public string Surname { get; set; }
         public bool Active { get; set; }
+        public string StudentNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentCourse> StudentCourses { get; set; }

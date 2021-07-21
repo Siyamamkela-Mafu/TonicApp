@@ -69,9 +69,6 @@
     <Compile Include="StudentCourse.cs">
       <DependentUpon>Tonic.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>Tonic.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tonic.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

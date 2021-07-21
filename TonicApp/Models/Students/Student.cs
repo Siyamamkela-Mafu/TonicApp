@@ -11,6 +11,7 @@ namespace TonicApp.Models.Students
         public string FName { get { return _model.FName; } set { _model.FName = value; } }
         [Display(Name = "Surname")]
         public string Surname { get { return _model.Surname; } set { _model.Surname = value; } }
+        public string StudentNo { get { return _model.StudentNo; } set { _model.StudentNo = value; } }
         public bool Active { get { return _model.Active; } set { _model.Active = value; } }
         #endregion
         public Business.Students.Student Map()
