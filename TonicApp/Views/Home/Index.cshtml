@@ -2,6 +2,32 @@
 @{
     ViewBag.Title = "Index";
 }
+@Styles.Render("~/Content/Home/Home.css")
+@{
+    ViewBag.Title = "Home";
+}
+<body>
+    <div class="cards-container">
+        <div class="k-card">
+            <a href="~/Import">
+                <img class="k-card-image" src="~/Images/import.svg" />
+                <div class="k-card-header">
+                    <h5 class="k-card-title">Upload Document</h5>
+                </div>
+            </a>
+        </div>
+        <div class="k-card">
+            <a href="~/Customer">
+                <img class="k-card-image" src="~/Images/groups_white_48dp.svg" />
+                <div class="k-card-header">
+                    <h5 class="k-card-title">Manage Students</h5>
+                </div>
+            </a>
+        </div>
+    </div>
+  
+</body>
 
-<h2>Index</h2>
+
+
 
