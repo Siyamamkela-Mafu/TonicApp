@@ -50,9 +50,9 @@ namespace Business.Students
         }
         internal void Delete(Data.Student entity)
         {
-            if (entity.Id != Id)
-                CustomErrorMessage.InvalidObject(nameof(Grade));
-            entity.Active = false;
+            if (entity.Id <=0)
+                CustomErrorMessage.InvalidObject(nameof(Student));
+            entity.Active = false;            
         }
         #endregion
     }

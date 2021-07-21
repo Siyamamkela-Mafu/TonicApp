@@ -67,6 +67,7 @@ namespace Business.Students
                         CustomErrorMessage.InvalidObject(nameof(Data.Student));
 
                     new Student().Delete(entity);
+                    context.Entry(entity);
                     context.SaveChanges();
                     transaction.Commit();
                 }

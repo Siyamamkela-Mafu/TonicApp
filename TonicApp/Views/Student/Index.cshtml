@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<br/>
+<br />
 <p>
     @Html.ActionLink("Import Students", "Index", "Import")
 </p>
@@ -31,31 +31,63 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.StudentNo)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.FName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Surname)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Code)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CourseDesc)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.GradeDesc)
-    </td>
-
-    <td>       
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseDesc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeDesc)
+            </td>
+            <td>            
+                <a href="#" data-target="#deleteModal" data-toggle="modal" onclick="Student.Params.studentId =@item.Id;Student.OnDelete() " data-name="delete">Delete</a>
+            </td>
+        </tr>
+    }
 
 </table>
+    @Html.Partial("_Success")
+
+<!-- Delete  Modal -->
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModal">Delete Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("Delete", "Student", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("studentId")
+                    <p>Are you sure you want to delete the selected student?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" value="Yes" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- End Delete  Modal -->
+@section scripts
+{    
+    @Scripts.Render("~/Scripts/Students/Student.js");    
+}

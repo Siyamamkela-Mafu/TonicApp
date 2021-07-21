@@ -39,7 +39,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="StudentId" Type="bigint" Nullable="false" />
           <Property Name="CourseId" Type="bigint" Nullable="false" />
-          <Property Name="Year" Type="nchar" MaxLength="10" />
+          <Property Name="Year" Type="datetime2" Precision="7" />
           <Property Name="GradeId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -224,12 +224,12 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="StudentCourses" Relationship="TonicModel.FK_StudentCourse_Student" FromRole="Student" ToRole="StudentCourse" />
           <Property Name="StudentNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StudentCourses" Relationship="TonicModel.FK_StudentCourse_Student" FromRole="Student" ToRole="StudentCourse" />
         </EntityType>
         <EntityType Name="StudentCourse">
           <Key>
@@ -238,7 +238,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentId" Type="Int64" Nullable="false" />
           <Property Name="CourseId" Type="Int64" Nullable="false" />
-          <Property Name="Year" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Year" Type="DateTime" Precision="7" />
           <Property Name="GradeId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="TonicModel.FK_StudentCourse_Course" FromRole="StudentCourse" ToRole="Course" />
           <NavigationProperty Name="Grade" Relationship="TonicModel.FK_StudentCourse_Grade" FromRole="StudentCourse" ToRole="Grade" />

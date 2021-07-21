@@ -17,7 +17,7 @@ namespace Data
         public long Id { get; set; }
         public long StudentId { get; set; }
         public long CourseId { get; set; }
-        public string Year { get; set; }
+        public Nullable<System.DateTime> Year { get; set; }
         public long GradeId { get; set; }
     
         public virtual Course Course { get; set; }

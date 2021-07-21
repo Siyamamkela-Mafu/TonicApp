@@ -35,7 +35,7 @@ namespace Business.StudentCourses
                     }
                     else
                     {
-                        var entity = GetEntity(model.StudentId, model.StudentId);
+                        var entity = GetEntity(model.StudentId, model.CourseId);
                         if (entity == null)
                             CustomErrorMessage.InvalidObject(nameof(StudentCourse));
 

@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="069722e0cfbc4dbc91a5fe3520c2238e" Name="Diagram1">
-        <EntityTypeShape EntityType="TonicModel.Course" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="TonicModel.Course" Width="1.5" PointX="0.75" PointY="8.125" />
         <EntityTypeShape EntityType="TonicModel.Grade" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="TonicModel.Student" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="TonicModel.Student" Width="1.5" PointX="0.75" PointY="5.125" />
         <EntityTypeShape EntityType="TonicModel.StudentCourse" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="TonicModel.FK_StudentCourse_Course" />
         <AssociationConnector Association="TonicModel.FK_StudentCourse_Grade" />
