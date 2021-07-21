@@ -3,31 +3,29 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+<br/>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Import Students", "Index", "Import")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StudentNo)
+            @Html.DisplayName("Student Number")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FName)
+            @Html.DisplayName("Firstname")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Surname)
+            @Html.DisplayName("Surname")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Code)
+            @Html.DisplayName("Course Code")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CourseDesc)
+            @Html.DisplayName("Course Description")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GradeDesc)
+            @Html.DisplayName("Grade")
         </th>
 
         <th></th>
@@ -53,9 +51,8 @@
     <td>
         @Html.DisplayFor(modelItem => item.GradeDesc)
     </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+    <td>       
         @Html.ActionLink("Delete", "Delete", new { id = item.Id })
     </td>
 </tr>

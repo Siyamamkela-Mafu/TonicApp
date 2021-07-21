@@ -1,13 +1,9 @@
 ﻿using Data;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.StudentCourses
 {
-   public class StudentHelper:Student
+   public class StudentHelper:Students.Student
     {
         public string Code { get; set; }
         public string CourseDesc { get; set; }
