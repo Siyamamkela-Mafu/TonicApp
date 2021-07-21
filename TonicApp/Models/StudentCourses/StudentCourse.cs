@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections.Generic;
+
 namespace TonicApp.Models.StudentCourses
 {
     public class StudentCourse
@@ -11,6 +13,8 @@ namespace TonicApp.Models.StudentCourses
         public long CourseId { get { return _model.CourseId; } set { _model.CourseId = value; } }
         public long GradeId { get { return _model.GradeId; } set { _model.GradeId = value; } }
         public bool Active { get { return _model.Active; } set { _model.Active = value; } }
+
+        public List<Business.StudentCourses.StudentHelper> StudentDetails { get; set; }
         #endregion
         public Business.StudentCourses.StudentCourse Map()
         {

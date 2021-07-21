@@ -10,6 +10,11 @@ namespace Business.StudentCourses
 {
    public class StudentCourseBL
     {
+        public static List<StudentHelper> GetDetails()
+        {
+            using (var context = TonicDTO.Context)
+                return StudentHelper.Get(context).ToList();
+        }
         public static long Save(StudentCourse model)
         {
             using (var context = TonicDTO.Context)

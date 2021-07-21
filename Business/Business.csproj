@@ -62,6 +62,7 @@
     <Compile Include="StudentCourses\StudentCourseBL.cs" />
     <Compile Include="Students\Student.cs" />
     <Compile Include="Students\StudentBL.cs" />
+    <Compile Include="StudentCourses\StudentHelper.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
