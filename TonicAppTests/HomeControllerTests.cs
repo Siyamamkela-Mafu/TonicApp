@@ -16,5 +16,6 @@ namespace TonicAppTests
             ViewResult result=controller.Index() as ViewResult;
             Assert.IsNotNull(result);
         }
+       
     }
 }

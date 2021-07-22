@@ -12,7 +12,7 @@ namespace TonicApp.Controllers
             var student = Business.StudentCourses.StudentCourseBL.GetDetails();          
             return View(student);
         }
-        public ActionResult Delete (int studentId)
+        public ActionResult Delete (long studentId)
         {
             try
             {
